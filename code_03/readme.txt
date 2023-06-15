@@ -22,7 +22,7 @@ Under management > right click on project file > Properties > Build targets > Ch
 Or management > right click on a fortran file (.f90) > Properties > Build > Check/ uncheck Build Target Files
 
 As an example, in this code I would put:
-	Output filename = 		proj_test*\bin\test*\proj_test*.exe
+	Output filename = 		    proj_test*\bin\test*\proj_test*.exe
 	Execution working dir = 	proj_test*\
 	Objects output dir = 		proj_test*\obj\text*
 proj_test*\ is the directory I created for this problem.
