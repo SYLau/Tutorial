@@ -17,6 +17,10 @@ To create a new "build target":
 	b. Execution working dir: specify the working directory (Important: this is where the code is run from.)
 	c. Objects output dir: specify the path to store the compiled objects (the modules will be compiled to objects before the code is compiled.)
 
+To select which module files to include:
+Under management > right click on project file > Properties > Build targets > Check/ uncheck Build Target Files
+Or management > right click on a fortran file (.f90) > Properties > Build > Check/ uncheck Build Target Files
+
 As an example, in this code I would put:
 	Output filename = 		proj_test*\bin\test*\proj_test*.exe
 	Execution working dir = 	proj_test*\

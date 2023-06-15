@@ -1,8 +1,8 @@
 program test1
     use odeSolver_example_mod,only:rk45ad, tp, xp
     implicit none
-        real(8)::t,tb
-        real(8),dimension(:),allocatable::x
+        real(8)::t,tb                           ! (8) in real(8) represents Double precision. Each real number uses 8 Bytes (64 bits) memory
+        real(8),dimension(:),allocatable::x     ! allocatable array. Can have variable number of elements.
         real(8)::h
         real(8)::emax
         real(8)::hmin
@@ -21,9 +21,9 @@ program test1
         itmax= 100              !set_itmax
 
         t=0                     !initial time
-        tb=8.d0                !final time
+        tb=8.d0                 !final time
         x = [1.d0, 0.d0]        !initial condition
-        call rk45ad(ode_SHM,t,x,h,tb,itmax,emax,iflag,saveData=.true.,hmin=hmin)
+        call rk45ad(ode_SHM,t,x,h,tb,itmax,emax,iflag,saveData=.true.,hmin=hmin) !adaptive step size RK4 integrator. Solutions are saved in variables tp, xp
 
         !===================================================================
         ! Output
@@ -37,12 +37,17 @@ program test1
 
     contains
 
-    subroutine ode_SHM(t,x,f)
+    !===================================================================
+    ! Define ordinary differential equations
+    ! Equation ddx = - x
+    ! Define x1 = x, x2 = dx
+    !===================================================================
+    subroutine ode_SHM(t,x,dx)
         real(8), intent(in):: t, x(:)
-        real(8), intent(out):: f(:)
+        real(8), intent(out):: dx(:)
 
-        f(1) = x(2)
-        f(2) = -x(1)
+        dx(1) = x(2)
+        dx(2) = -x(1)
     end subroutine ode_SHM
 
 end program test1
