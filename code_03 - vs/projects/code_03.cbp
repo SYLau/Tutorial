@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="code_03" />
+		<Option pch_mode="2" />
+		<Option compiler="gnu_fortran_compiler_64" />
+		<Build>
+			<Target title="test1">
+				<Option output="proj_test1/bin/test1/proj_test1" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="./proj_test1/" />
+				<Option object_output="proj_test1/obj/test1/" />
+				<Option type="1" />
+				<Option compiler="gnu_fortran_compiler_64" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="test2">
+				<Option output="proj_test2/bin/test2/proj_test2" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="./proj_test2/" />
+				<Option object_output="proj_test2/obj/test2/" />
+				<Option type="1" />
+				<Option compiler="gnu_fortran_compiler_64" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+		</Build>
+		<VirtualTargets>
+			<Add alias="build_all" targets="test1;test2;" />
+		</VirtualTargets>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="../readme.txt" />
+		<Unit filename="../src/global/type.f90">
+			<Option weight="0" />
+		</Unit>
+		<Unit filename="../src/math/ode_solve_example.f90">
+			<Option weight="0" />
+		</Unit>
+		<Unit filename="proj_test1/main.f90">
+			<Option weight="1" />
+			<Option target="test1" />
+		</Unit>
+		<Unit filename="proj_test2/main.f90">
+			<Option weight="1" />
+			<Option target="test2" />
+		</Unit>
+		<Extensions>
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
