@@ -14,7 +14,6 @@ module module_example_mod
     subroutine subr_2(x)
        real(8),intent(in)::x
         print*, x**3
-        call subr_private
     end subroutine subr_2
 
     function func_2(x)
@@ -24,9 +23,8 @@ module module_example_mod
     end function func_2
 
     subroutine subr_private        !An example of a private subroutine that cannot be used outside this module
-        print*,'calling subr_private from subr_2:'
-        print*,'  This is private to this module, since it is not declared as "public".'
-        print*,'  Can only be called by the subroutines/ functions within this module'
+        print*,'This is private to this module, since it is not declared as "public".'
+        print*,'Can only be called by the subroutines/ functions within this module'
     end subroutine subr_private
 
 end module module_example_mod
