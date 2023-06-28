@@ -3,7 +3,7 @@
 #
 
 #=============================================================================================
-#Followed from the guide: http://skramm.blogspot.com/2013/04/writing-portable-makefiles.html
+#Following the guide: http://skramm.blogspot.com/2013/04/writing-portable-makefiles.html
 #Writing portable makefiles
 #Add the following definition of PATHSEP
 ifdef ComSpec
