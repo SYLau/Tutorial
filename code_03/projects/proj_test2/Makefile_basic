@@ -1,0 +1,16 @@
+all : proj_test2.exe
+	gfortran -o proj_test2.exe main.o type.o ode_solve_example.o
+
+main.o : main.f90
+	gfortran -c main.f90
+
+type.o : ../../src/global/type.f90
+	gfortran -c ../../src/global/type.f90
+
+ode_solve_example.o : ../../src/math/ode_solve_example.f90
+	gfortran -c ../../src/math/ode_solve_example.f90
+
+clean:
+	rm *.o
+	rm *.mod
+	rm proj_test2.exe
