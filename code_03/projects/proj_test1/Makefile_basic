@@ -1,4 +1,6 @@
 all : proj_test1.exe
+
+proj_test1.exe : main.o type.o ode_solve_example.o
 	gfortran -o proj_test1.exe main.o type.o ode_solve_example.o
 
 main.o : main.f90
