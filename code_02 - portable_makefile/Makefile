@@ -5,37 +5,45 @@
 #=============================================================================================
 #Following the guide: http://skramm.blogspot.com/2013/04/writing-portable-makefiles.html
 #Writing portable makefiles
-#Add the following definition of PATHSEP
+#Add the following definition of PATHSEP, CMDSEP, RM, etc
 ifdef ComSpec
-    PATHSEP2=\\
+	PATHSEP2=\\
 else
-    PATHSEP2=/
+	PATHSEP2=/
 endif
 PATHSEP=$(strip $(PATHSEP2))
 
-ifndef ComSpec
-    CMDSEP=;
+ifdef ComSpec
+	CMDSEP=;
 else
-    CMDSEP=&
+	CMDSEP=&
 endif
 
 ifdef ComSpec
-    RM=del /F /Q
+	RM=del /F /Q
 else
-    RM=rm -f
+	RM=rm -f
 endif
 
 ifdef ComSpec
-    RM1=rmdir /S /Q obj
+	MKDIR_OBJS = if not exist $(OBJS_DIR) ( @mkdir $(OBJS_DIR) )
+	MKDIR_EXE = if not exist $(EXE_DIR) ( @mkdir $(EXE_DIR) )
+else
+	MKDIR_OBJS = @mkdir -p $(OBJS_DIR)
+	MKDIR_EXE = @mkdir -p $(EXE_DIR)
+endif
+
+ifdef ComSpec
+	RM1=rmdir /S /Q obj
 	RM2=rmdir /S /Q bin
 else
-    RM1=rm -r obj
+	RM1=rm -r obj
 	RM2=rm -r bin
 endif
 #=============================================================================================
-#Starting from here, replace all forward slashes "/" or back slashes "\" with $(PATHSEP)
+#Starting from here, replace all forward slashes "/" with $(PATHSEP)
 #Replace all command separators ";" or "&" with $(CMDSEP)
-#Replace all mkdir -p $(DIR) lines with if not exist $(DIR) ( @mkdir $(DIR) )
+#Replace all mkdir -p $(DIR) lines with MKDIR_OBJS or MKDIR_EXE
 #Replace all rm with ($RM) Or Replace content in clean: with ($RM1), ($RM2)
 
 #To execute .exe with Powershell: ./bin\Debug\code_02.exe
@@ -66,11 +74,13 @@ OBJS = $(addprefix $(OBJS_DIR), $(OBJS_f90d1))
 all : $(EXE)
 
 $(EXE) : $(OBJS_f90d1)
-	if not exist $(EXE_DIR) ( @mkdir $(EXE_DIR) )
+#	@mkdir -p $(EXE_DIR)
+	$(MKDIR_EXE)
 	$(LD) -o $(EXE_DIR)$(EXE) $(OBJS) $(LFLAGS) $(LIBS)
 
 $(OBJS_f90d1):
-	if not exist $(OBJS_DIR) (@mkdir $(OBJS_DIR) )
+#	@mkdir -p $(OBJS_DIR)
+	$(MKDIR_OBJS)
 	$(FC) $(CFLAGS) -c $(SRC_DIR_f90d1)$(@:.o=.f90) -o $(OBJS_DIR)$@
 
 clean :
