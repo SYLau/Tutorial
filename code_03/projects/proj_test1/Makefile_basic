@@ -1,7 +1,8 @@
 all : proj_test1.exe
 
-proj_test1.exe : main.o type.o ode_solve_example.o
-	gfortran -o proj_test1.exe main.o type.o ode_solve_example.o
+proj_test1.exe : type.o ode_solve_example.o main.o
+	gfortran -o proj_test1.exe type.o ode_solve_example.o main.o
+	./proj_test1.exe
 
 main.o : main.f90
 	gfortran -c main.f90
@@ -15,4 +16,5 @@ ode_solve_example.o : ../../src/math/ode_solve_example.f90
 clean:
 	rm *.o
 	rm *.mod
+	rm *.dat
 	rm proj_test1.exe
