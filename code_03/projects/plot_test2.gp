@@ -1,4 +1,4 @@
-set term wxt size 640, 480 font "12"
+#set term wxt size 640, 480 font "12"
 
 set xlabel "time"
 set ylabel "soln"

@@ -16,9 +16,9 @@ program test1
         ! Solve ODE
         !===================================================================
         h= 1.d-4                !set initial step size
-        emax= 1.d-10            !set_emax
-        hmin= 0                 !set_hmin
-        itmax= 100              !set_itmax
+        emax= 1.d-10            !set limit on maximum local fractional error
+        hmin= 0                 !set minimum step size
+        itmax= 100              !set max. number of iterations
 
         t=0                     !initial time
         tb=8.d0                 !final time
