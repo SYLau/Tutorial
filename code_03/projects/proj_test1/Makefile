@@ -37,8 +37,8 @@ OBJS_DIR = obj/test1/src/math/
 EXE_DIR = bin/test1/
 
 EXE = proj_test1.exe
-FC = x86_64-w64-mingw32-gfortran.exe
-LD = x86_64-w64-mingw32-gfortran.exe
+FC = gfortran
+LD = gfortran
 IDIR = 
 CFLAGS = -Wall -g -pedantic -Wextra -Wall -fbacktrace -fcheck=all -m64 -ffpe-trap=zero,overflow,underflow  -J$(OBJS_DIR) $(IDIR)
 LFLAGS = 

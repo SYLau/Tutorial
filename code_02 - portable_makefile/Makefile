@@ -6,6 +6,10 @@
 #Following the guide: http://skramm.blogspot.com/2013/04/writing-portable-makefiles.html
 #Writing portable makefiles
 #Add the following definition of PATHSEP, CMDSEP, RM, etc
+
+SHELL=cmd
+#SHELL=sh
+
 ifdef ComSpec
 	PATHSEP2=\\
 else
@@ -37,8 +41,8 @@ ifdef ComSpec
 	RM1=rmdir /S /Q obj
 	RM2=rmdir /S /Q bin
 else
-	RM1=rm -r obj
-	RM2=rm -r bin
+	RM1=rm -rf obj
+	RM2=rm -rf bin
 endif
 #=============================================================================================
 #Starting from here, replace all forward slashes "/" with $(PATHSEP)

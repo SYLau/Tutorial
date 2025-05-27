@@ -37,8 +37,8 @@ OBJS_DIR = obj/test2/projects/proj_test2/
 EXE_DIR = bin/test2/
 
 EXE = proj_test2.exe
-FC = x86_64-w64-mingw32-gfortran.exe
-LD = x86_64-w64-mingw32-gfortran.exe
+FC = gfortran
+LD = gfortran
 IDIR = 
 CFLAGS = -Wall -g -pedantic -Wextra -Wall -fbacktrace -fcheck=all -m64 -ffpe-trap=zero,overflow,underflow  -J$(OBJS_DIR) $(IDIR)
 LFLAGS = 
